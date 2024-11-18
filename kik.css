@@ -1,0 +1,675 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%; /* Задаємо висоту для HTML та BODY */
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Розміщуємо елементи вертикально */
+    min-height: 100vh; /* Мінімальна висота контейнера - 100% висоти вікна */
+}
+
+body {
+    font-family: 'Jomhuria', sans-serif;
+    background-color: #1E3A5F;
+    color: #ffffff;
+    max-width: 1080px;
+    margin: auto;
+    position: relative;
+    flex: 1; /* Дозволяємо основному контенту займати доступний простір */
+}
+
+/* Тема для темного режиму */
+body.dark-theme {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* Тема для світлого режиму */
+body:not(.dark-theme) {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo {
+    font-size: 64px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Тінь для логотипу */
+}
+
+.login-btn {
+    background-color: #3A5B8B;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+main {
+    padding: 40px 20px;
+    flex: 1; /* Дозволяємо основному контенту займати доступний простір */
+}
+
+.description {
+    margin-bottom: 30px;
+}
+
+.description h1 {
+    margin-bottom: 10px;
+    font-size: 36px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Тінь для заголовка */
+    border: 2px; /* Обводка для заголовка */
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px; /* Відстань між секціями */
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 20px; /* Відступ знизу */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px; /* Розмір шрифту в текстовому полі */
+    background-color: #E0E0E0; /* Світлий фон текстового поля */
+    color: #000; /* Чорний текст */
+    overflow: auto; /* Дозволяємо прокрутку */
+}
+
+.check-btn {
+    background-color: #4CAF50; /* Завжди зелений колір фону кнопки */
+    color: black; /* Чорний колір тексту */
+    border: none;
+    padding: 10px 15px; /* Зменшені відступи */
+    border-radius: 30px; /* Закруглені краї */
+    cursor: pointer;
+    font-size: 16px; /* Зменшений розмір шрифту кнопки */
+    width: 100px; /* Фіксована ширина для кнопки */
+}
+
+.check-btn:hover {
+    background-color: #4CAF50; /* Залишити той самий зелений колір при наведенні */
+    color: black; /* Залишити чорний текст при наведенні */
+    /* Прибираємо зміну стилю при наведенні */
+}
+
+.loader {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #4CAF50; /* Зелений колір */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 10px auto; /* Центруємо спінер */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#result {
+    margin-top: 10px; /* Відступ над результатом */
+    font-size: 20px; /* Розмір шрифту результату */
+    text-align: center; /* Центруємо текст */
+}
+
+/* Колір тексту для результату на темній темі */
+body.dark-theme #result {
+    color: #FFFFFF; /* Білий текст на темній темі */
+}
+
+/* Колір тексту для результату на світлій темі */
+body:not(.dark-theme) #result {
+    color: #000000; /* Чорний текст на світлій темі */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #2E4B6E;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+/* Підключаємо стильний шрифт */
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    /* Застосування шрифту до всього контенту */
+    margin: 0;
+    padding: 0;
+}
+
+/* Основний контейнер форми */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #927d97;
+    /* Сірий фон */
+    padding: 30px 20px;
+    border-radius: 4px;
+    width: 320px;
+    text-align: center;
+    color: #89e440;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Заголовок форми */
+.modal h2 {
+    font-size: 24px;
+    color: #ffffff;
+    /* Білий заголовок */
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Стиль для полів вводу */
+.modal label {
+    display: block;
+    text-align: left;
+    font-size: 16px;
+    color: #ffffff;
+    /* Білий текст для лейблів */
+    margin-bottom: 5px;
+}
+
+.modal input[type="email"],
+.modal input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    /* Білий підкреслений бордер */
+    background-color: transparent;
+    color: #ffffff;
+    /* Білий текст у полях */
+    font-size: 16px;
+    outline: none;
+}
+
+/* Кнопки */
+.modal button {
+    padding: 10px 0;
+    width: 100px;
+    /* Фіксована ширина для обох кнопок */
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: lowercase;
+    transition: background-color 0.3s ease;
+    font-weight: 700;
+    /* Жирний шрифт для кнопок */
+}
+
+.modal .check-btn {
+    background-color: #4CAF50;
+    /* Зелений колір для кнопки "check in" */
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.modal .login-btn {
+    background-color: #4CAF50;
+    /* Зелений колір для кнопки "log in" */
+    color: #ffffff;
+}
+
+/* Стиль для розташування кнопок */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Кнопка закриття */
+.modal .close-btn {
+    position: absolute;
+    top: -16px;
+    left: -42px;
+    /* Негативне значення для зміщення ліворуч */
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 22px;
+    line-height: 1;
+}
+
+.modal .close-btn:hover {
+    color: #9d3abb;
+    /* Червоний колір при наведенні */
+}
+
+/* Кнопка "Check in" */
+.check-btn {
+    background-color: #4CAF50; /* Завжди зелений колір фону кнопки */
+    color: black; /* Чорний колір тексту */
+    border: none;
+    padding: 10px 15px; /* Зменшені відступи */
+    border-radius: 30px; /* Закруглені краї */
+    cursor: pointer;
+    font-size: 16px; /* Зменшений розмір шрифту кнопки */
+    width: 100px; /* Фіксована ширина для кнопки */
+}
+
+/* Прибираємо стилі для :hover, щоб колір не змінювався */
+.check-btn:hover {
+    background-color: #4CAF50; /* Залишити той самий зелений колір при наведенні */
+    color: black; /* Залишити чорний текст при наведенні */
+    /* Не додавати ніяких змін */
+}
+
+/* Кнопка "Log in" */
+.login-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background-color: #66bb6a;
+    /* Світліший зелений фон при наведенні */
+}
+
+/* Стиль контейнера для кнопок */
+.button-container {
+    display: flex;
+    justify-content: flex-start;
+    /* Розташовує кнопки зліва */
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Стиль для кнопки "Log in" */
+.login-btn {
+    background-color: #0e61dd;
+    /* Зелений фон */
+    color: white;
+    /* Білий текст */
+    border: none;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 15px;
+    /* Закруглені краї */
+    cursor: pointer;
+}
+
+/* Для кнопок login та check in */
+button {
+    border: none;
+    /* Видалення обводки */
+    outline: none;
+    /* Видалення контурної рамки */
+    background: none;
+    /* Відсутність фону */
+    color: #f7f7f7;
+    /* Колір тексту кнопки */
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    /* Додати округлення, якщо потрібно */
+}
+
+.upload-btn {
+
+    background-color: #3A5B8B; /* Колір фону */
+
+    color: white; /* Колір тексту */
+
+    border: none; /* Видаляємо обведення */
+
+    padding: 10px 20px; /* Відступи */
+
+    border-radius: 50px; /* Закруглені кути */
+
+    cursor: pointer; /* Курсор у вигляді руки */
+
+    font-size: 16px; /* Розмір шрифту */
+
+    margin-top: 10px; /* Відступ зверху */
+
+}
+
+/* Зміна кольору при наведенні */
+.upload-btn:hover {
+
+    background-color: #2E4B6E; /* Зміна кольору при наведенні */
+
+}
+
+/* При наведенні на кнопки */
+button:hover {
+    background-color: rgb(95, 28, 116);
+    /* Підсвічування зеленим при наведенні */
+    color: #fff;
+    /* Колір тексту при наведенні */
+}
+
+/* Для контейнера вікна */
+.login-modal {
+    border-radius: 10px;
+    /* Закруглені рамки, можна змінити значення за потребою */
+    overflow: hidden;
+    /* Це допоможе, якщо всередині є елементи, що можуть виходити за межі */
+}
+
+/* Секція з вибором кольору */
+.color-change-section {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.color-change-section h2 {
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+/* Стиль для вибору кольору */
+#colorPicker {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Стиль для браузерів, які підтримують кольоровий інпут */
+#colorPicker::-webkit-color-swatch {
+    border-radius: 50%;
+}
+
+/* Анімація при наведенні */
+#colorPicker:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Додано стилі для прев’ю зображень */
+#image-preview-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#image-preview {
+    max-width: 200px;
+    max-height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: none; /* Спочатку приховане, відображається лише після вибору зображення */
+}
+
+/* Медіа-запити для адаптивного дизайну */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .logo {
+        font-size: 48px;
+    }
+
+    .description h1 {
+        font-size: 24px;
+    }
+
+    .check-btn, .upload-btn {
+        width: 100%;
+    }
+
+    .input-section {
+        padding: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 36px;
+    }
+
+    .description h1 {
+        font-size: 20px;
+    }
+
+    .check-btn, .upload-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+
+body {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+
+/* Стиль для кнопки перемикання теми */
+.theme-switch {
+    position: fixed;
+    /* Фіксоване позиціонування */
+    top: 10px;
+    /* Відступ від верхнього краю */
+    right: 10px;
+    /* Відступ від правого краю */
+    z-index: 1000;
+    /* Зробити її поверх інших елементів */
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+/* Приховуємо стандартний чекбокс */
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Основний слайдер */
+.theme-switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 15px;
+    transition: 0.4s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Рухомий індикатор */
+.theme-switch .slider::before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Анімовані іконки */
+.theme-switch .icon {
+    position: absolute;
+    font-size: 16px;
+    color: white;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity 0.4s ease-in-out;
+    pointer-events: none;
+}
+
+.theme-switch .sun {
+    left: 10px;
+    opacity: 1;
+}
+
+.theme-switch .moon {
+    right: 10px;
+    opacity: 0;
+}
+
+/* Перемикання теми */
+.theme-switch input:checked+.slider {
+    background-color: #4a90e2;
+}
+
+.theme-switch input:checked+.slider::before {
+    transform: translateX(30px);
+}
+
+.theme-switch input:checked+.slider .sun {
+    opacity: 0;
+}
+
+.theme-switch input:checked+.slider .moon {
+    opacity: 1;
+}
+
+
+/* Загальні стилі для перемикача */
+.theme-switch {
+    position: fixed;
+    /* Використовуємо фіксовану позицію */
+    top: 20px;
+    /* Відстань від верхнього краю */
+    right: 20px;
+    /* Відстань від правого краю */
+    z-index: 100;
+    /* Задаємо високий рівень, щоб він був поверх інших елементів */
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: left 0.3s ease-in-out;
+    /* Додаємо анімацію для зміщення */
+}
+
+/* Плавна зміна теми */
+body.dark-theme {
+    transition: background-color 0.5s ease, color 0.5s ease;
+    /* Плавний перехід для фону та кольору */
+}
+
+/* Зміщення для зручного перегляду іконок */
+.theme-switch .slider {
+    display: flex;
+    justify-content: space-between;
+    width: 50px;
+    padding: 5px;
+}
+
+.icon {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+    /* Додаємо анімацію для іконок */
+}
+
+.sun:hover,
+.moon:hover {
+    transform: scale(1.2);
+    /* Збільшуємо іконки при наведенні */
+}
+
+/* Темна тема для контенту */
+body.dark-theme {
+    background-color: #121212;
+    color: white;
+}
+
+
+
+/* Загальні стилі для перемикача */
+.theme-switch {
+    position: fixed;
+    /* Використовуємо фіксовану позицію */
+    top: 20px;
+    /* Відстань від верхнього краю */
+    right: 20px;
+    /* Відстань від правого краю */
+    z-index: 100;
+    /* Задаємо високий рівень, щоб він був поверх інших елементів */
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: left 0.3s ease-in-out;
+    /* Додаємо анімацію для зміщення */
+}
+
+/* Плавна зміна теми */
+body.dark-theme {
+    transition: background-color 0.5s ease, color 0.5s ease;
+    /* Плавний перехід для фону та кольору */
+}
+
+/* Зміщення для зручного перегляду іконок */
+.theme-switch .slider {
+    display: flex;
+    justify-content: space-between;
+    width: 50px;
+    padding: 5px;
+}
+
+.icon {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+    /* Додаємо анімацію для іконок */
+}
+
+.sun:hover,
+.moon:hover {
+    transform: scale(1.2);
+    /* Збільшуємо іконки при наведенні */
+}
+
+/* Темна тема для контенту */
+body.dark-theme {
+    background-color: #121212;
+    color: white;
+}
